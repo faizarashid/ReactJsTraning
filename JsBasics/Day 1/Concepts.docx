@@ -1,1 +1,47 @@
-Concepts Covered :
+﻿Concepts Covered:
+    • Function Purity
+Reference: https://www.freecodecamp.org/news/what-is-a-pure-function-in-javascript-acb887375dfe/
+    • States
+Reference: https://www.freecodecamp.org/news/state-in-javascript-explained-by-cooking-a-simple-meal-2baf10a787ee/
+
+    • Mutability & Immutability
+    • Imperative and Declarative Programming
+
+Reference: https://www.geeksforgeeks.org/difference-between-imperative-and-declarative-programming/
+
+    • Higher Order Functions
+    • Functional Programming
+
+const fpCopy = `Functional programming is powerful and enjoyable to write. It's very cool!`;
+
+// remove punctuation from string 
+const stripPunctuation = (str) =>
+  str.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
+
+// split passed string on spaces to create an array
+const getArr = (str) =>
+  str.split(' ');
+
+// count items in the passed array
+const getWordCount = (arr) =>
+  arr.length;
+
+// find items in the passed array longer than 5 characters
+// make items lower case
+const getKeywords = (arr) =>
+  arr
+    .filter(item => item.length > 5)
+    .map(item => item.toLowerCase());
+
+// process copy to prep the string, create an array, count words, and get keywords
+function processCopy(str, prepFn, arrFn, countFn, kwFn) {
+  const copyArray = arrFn(prepFn(str));
+  
+  console.log(`Word count: ${countFn(copyArray)}`);
+  console.log(`Keywords: ${kwFn(copyArray)}`);
+}
+
+processCopy(fpCopy, stripPunctuation, getArr, getWordCount, getKeywords);
+
+Reference: https://jsfiddle.net/kmaida/xxc7g0ve/
+      
